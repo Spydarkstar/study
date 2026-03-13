@@ -1,20 +1,26 @@
-name: test project
+name: Test Project
 
 on:
-pull_request:
-branches: -main
-
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 jobs:
-test:
-run-on: windows-latest
-conatiner:
-image: node:20
-steps:
--uses: actions/checkout@v3
-with:
-node-verison: 20
--run: npm ci
--run: npm test
--run: npm run build
+  test:
+    runs-on: windows-latest
 
+    container:
+      image: node:20
 
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
