@@ -3,7 +3,7 @@
 using namespace std;
 void function(int i)
 {
-    return i + 1;
+    retur i + 1;
 }
 int main()
 {
